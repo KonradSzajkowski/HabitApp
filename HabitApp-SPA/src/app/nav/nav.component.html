@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+   
+  <a class="navbar-brand" href="#">Habit App</a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item"><a class="nav-link" href="#" (click)="activateAddHabitMode()">Dodaj Nawyk</a></li>
+    <div *ngFor="let name of habitnames" >
+    <li class="nav-item"><a class="nav-link" href="#" [name]="name" (click)="activateHabit()" >{{name}}</a></li>  
+    </div>
+  </ul>
+
+
+
+  <div *ngIf="loggedIn()" class="dropdown">
+    <div class="nav-item" class="nav-link" href="#" role="button" id="dropdownMenuLink" (click)="logout()">
+      Wyloguj
+    </div>
+  </div>
+
+  <form *ngIf="!loggedIn()"
+    #loginForm="ngForm"
+    class="form-inline my-2 my-lg-0"
+    (ngSubmit)="login()"
+  >
+    <input
+      class="form-control mr-sm-2"
+      type="text"
+      name="username"
+      placeholder="Username"
+      required [(ngModel)]="model.username"
+    />
+    <input
+      class="form-control mr-sm-2"
+      type="password"
+      name="password"
+      placeholder="Password"
+      required [(ngModel)]="model.password"
+    />
+    <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+  </form>
+</nav>

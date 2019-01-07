@@ -1,0 +1,36 @@
+<app-nav (setAddHabitMode)="setAddHabitMode($event)" (setHabit)="setHabit($event)" > </app-nav>
+<div class="container mt-5">
+  <div *ngIf="!registerMode&&!loggedIn()"  style="text-align: center">
+    <h1>Zbuduj nowe nawyki</h1>
+    <p class="lead">Zarejestruj się i sprawdź jakie to skuteczne </p>
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Zarejestruj</button>
+    </div>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register  (cancelRegister)="cancelRegisterMode($event)"></app-register>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="addHabitMode&&loggedIn()" class="container">
+      <div class="row justify-content-center">
+          <div class="col-4">
+              <app-addhabit (setAddHabitMode)="setAddHabitMode($event)"></app-addhabit>
+          </div>
+      </div>
+  </div>
+
+  <div *ngIf="habit&&loggedIn()" class="container">
+      <div class="row justify-content-center">
+          <div class="col-4">
+         <!--    <app-habit (setHabit)="setHabit($event)"></app-habit> --> 
+          </div>
+      </div>
+  </div>
+
+</div>
+

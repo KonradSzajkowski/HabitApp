@@ -1,0 +1,16 @@
+<form #registerForm="ngForm" (ngSubmit)="addHabit()" (ngSubmit)=cancelAddHabitMode() >
+  <h2 class="text-center text-primary">Dodaj Nawyk</h2>
+  <hr>
+
+  <div class="form-group">
+    <input type="text" class="form-control" required name="habitname" [(ngModel)]="model.habitname" placeholder="Nazwa nawyku">
+  </div>
+
+  
+
+  <div class="form-group text-center">
+    <button class="btn btn-success mr-2" type="submit" >Dodaj</button>
+    <button class="btn btn-default" type="button" (click)="cancelAddHabitMode()">Anuluj</button>
+  </div>
+  
+</form>
